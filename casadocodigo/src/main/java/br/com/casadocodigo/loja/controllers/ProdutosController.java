@@ -25,36 +25,35 @@ public class ProdutosController {
 
 	@Autowired
 	private ProdutoDAO produtoDao;
-	
+
 	@InitBinder
-	public void InitBinder(WebDataBinder binder){
-	    binder.addValidators(new ProdutoValidation());
+	public void InitBinder(WebDataBinder binder) {
+		binder.addValidators(new ProdutoValidation());
 	}
 
 	@RequestMapping("/form")
-	public ModelAndView form() {
+	public ModelAndView form(Produto produto) {
 		ModelAndView modelAndView = new ModelAndView("produtos/form");
 		modelAndView.addObject("tipos", TipoPreco.values());
 
 		return modelAndView;
 	}
-	
-	@RequestMapping(method=RequestMethod.GET)
-	public ModelAndView listar(){
-	    List<Produto> produtos = produtoDao.listar();
-	    ModelAndView modelAndView = new ModelAndView("/produtos/lista");
-	    modelAndView.addObject("produtos", produtos);
-	    return modelAndView;
+
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView listar() {
+		List<Produto> produtos = produtoDao.listar();
+		ModelAndView modelAndView = new ModelAndView("/produtos/lista");
+		modelAndView.addObject("produtos", produtos);
+		return modelAndView;
 	}
 
-	@RequestMapping(method=RequestMethod.POST)
-	public ModelAndView gravar(@Valid Produto produto, BindingResult result,RedirectAttributes redirectAttributes) {
-		if(result.hasErrors()){
-	        return form();
-	    }
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView gravar(@Valid Produto produto, BindingResult result, RedirectAttributes redirectAttributes) {
+		if (result.hasErrors()) {
+			return form(produto);
+		}
 		produtoDao.gravar(produto);
-		System.out.println(produto);
-		redirectAttributes.addFlashAttribute("sucesso","Produto cadastrado com sucesso!");
+		redirectAttributes.addFlashAttribute("message", "Produto cadastrado com sucesso");
 		return new ModelAndView("redirect:produtos");
 	}
 }
