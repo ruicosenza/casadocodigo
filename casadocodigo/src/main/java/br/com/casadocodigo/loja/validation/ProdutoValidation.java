@@ -12,7 +12,7 @@ public class ProdutoValidation implements Validator {
 	public boolean supports(Class<?> clazz) {
 		return Produto.class.isAssignableFrom(clazz);
 	}
-	
+
 
 	@Override
 	public void validate(Object target, Errors errors) {

@@ -24,7 +24,7 @@ public class Produto {
 	private List<Preco> precos;
 	@DateTimeFormat
 	private Calendar dataLancamento;
-	
+
 
 	public int getId() {
 		return id;
