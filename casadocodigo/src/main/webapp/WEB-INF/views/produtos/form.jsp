@@ -11,7 +11,7 @@
 	Casa do Código</title>
 </head>
 <body>
-	<form:form action="${s:mvcUrl('PC#gravar').build()}" method="post" commandName="produto">
+	<form:form action="${s:mvcUrl('PC#gravar').build()}" method="post" commandName="produto" enctype="multipart/form-data">
 		<div>
 			<label>Título</label>
 			<form:input path="titulo" />

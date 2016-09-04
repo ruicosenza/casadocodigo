@@ -24,7 +24,7 @@ public class Produto {
 	private List<Preco> precos;
 	@DateTimeFormat
 	private Calendar dataLancamento;
-
+	private String sumarioPath;
 
 	public int getId() {
 		return id;
@@ -72,6 +72,14 @@ public class Produto {
 
 	public void setDataLancamento(Calendar dataLancamento) {
 		this.dataLancamento = dataLancamento;
+	}
+
+	public String getSumarioPath() {
+		return sumarioPath;
+	}
+
+	public void setSumarioPath(String sumarioPath) {
+		this.sumarioPath = sumarioPath;
 	}
 
 	@Override

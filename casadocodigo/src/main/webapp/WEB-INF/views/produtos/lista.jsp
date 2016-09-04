@@ -24,6 +24,7 @@
 			<td>${produto.descricao}</td>
 			<td>${produto.paginas}</td>
 		</tr>
+		<br />
 	</c:forEach>
 </body>
 </html>
